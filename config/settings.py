@@ -1,9 +1,13 @@
 
 from pathlib import Path
 import os
+import environ
+env = environ.Env()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -29,6 +33,7 @@ INSTALLED_APPS = [
     #'account',
     'library',
     #'users'
+    'crispy_forms'
    
 ]
 
@@ -123,3 +128,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 #AUTH_USER_MODEL = 'account.CustomUserModel'
 #AUTH_USER_MODEL = 'users.CustomUser'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+#gmail_send/settings.py
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'y.teker.1907.1907@gmail.com'
+EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD') #past the key or password app here
+EMAIL_PORT = 587
+EMAIL_USE_TLS  = True
+DEFAULT_FROM_EMAIL = 'y.teker.1907.1907@gmail.com'

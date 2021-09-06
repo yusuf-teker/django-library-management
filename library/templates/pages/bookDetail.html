@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Books{% endblock %} 
+
+{% block content %}
+
+
+
+
+
+<div class="card-transparent mb-3">
+  <div class="row g-0" style="background-color: rgba(255, 255, 255, 0.5); border: 5px solid; border-color: rgba(33, 36, 41, 0.5);">
+    <div class="col-md-4">
+      <img src="{{ book.coverPicture.url }}" class="img-fluid rounded-start" alt="..." style=" height: auto; 
+      width: auto; 
+      min-height: 200px;
+      max-width: 300px; ">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body" >
+        <h5 class="card-title">{{ book.bookName }}</h5>
+        <p class="card-text" >{{ book.bookBlurb|safe }}</p> 
+        {% if book.iaAvailable %}
+        <ul class="list-group list-group-flush" style = "background-color: blue; vertical-align: bottom;">
+          <li class="list-group-item" style="vertical-align: bottoms">{{book.author}} - {{book.publicationYear}}</li>
+        </ul>
+                
+        {% else %}
+        <ul class="list-group list-group-flush" style = "background-color: rgb(255, 0, 0);vertical-align: bottom;">
+          <li class="list-group-item list-group-item-dark" style="vertical-align: bottoms"  >Author: {{book.author}} - Publication Date: {{book.publicationYear}}</li>
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+

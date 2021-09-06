@@ -11,32 +11,42 @@
   <div class="row">
 {% for book in books %}
 
-{% if book.isAvailable %}
 
-      <div class="col-12 col-md-5 " >
-        <div class="card mb-4 " style="width: 18rem;" >
-          <img class="card-img-top mt-2" src="{{book.coverPicture.url}}" alt="Card image cap" style=" 
-          max-height: 405px;
-          max-width: 270px; 
-          min-height: 405px;
-          min-width: 270px; 
-          height: auto;
-          width: auto;
-          align-self: center;">
-          <div class="card-body">
-            <h5 class="card-title">{{book.bookName}}</h5>
-            <p class="card-text">{{book.bookBlurb|safe|truncatewords:35}}</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{book.author}} - {{book.publicationYear}}</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
+
+  <div class="col-12 col-md-5 " >
+    <div class="card mb-4 " style="width: 24rem;" >
+      <img class="card-img-top mt-2 ml-2" src="{{book.coverPicture.url}}" alt="Card image cap" style=" 
+      max-height: 405px;
+      max-width: 270px; 
+      min-height: 405px;
+      min-width: 270px; 
+      height: auto;
+      width: auto;
+      align-self: center;">
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'bookDetail' slug=book.slug %}">{{book.bookName}}</a></h5>
+        <p class="card-text">{{book.bookBlurb|safe|truncatewords:30}}</p>
+      </div>
+      
+      
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{book.author}} - {{book.publicationYear}}</li>
+      </ul>
+<!--**********************-->
+      {% if book.isAvailable %}
+      <div class="card-body" style = "background-color: rgb(21, 255, 0);">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+      {% else %}
+      <div class="card-body" style = "background-color: rgb(255, 0, 0);">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+      {% endif %}
     </div>
-    {% endif %}
+</div>
+
 {% endfor %}
   </div>
 </div>
