@@ -1,8 +1,49 @@
 {% extends 'base.html' %}
 
-{% block title %}Anasayfa{% endblock %} 
+{% block title %} MyBooks{% endblock %} 
 
 {% block content %}
+
+
+
+
+
+
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Book ID</th>
+        <th scope="col">Book Name</th>
+        <th scope="col">Last Date</th>
+      </tr>
+
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <th scope="row">{{book.id}}</th>
+            <td>{{book.bookName}}</td>
+            <td>{{book.lendperiod}}</td>
+          </tr>
+          {% endfor %}
+    </tbody>
+  </table>
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10,9 +51,6 @@
 <div class="container">
   <div class="row">
 {% for book in books %}
-
-{% if book.isAvailable %}
-
       <div class="col-12 col-md-5 " >
         <div class="card mb-4 " style="width: 18rem;" >
           <img class="card-img-top mt-2" src="{{book.coverPicture.url}}" alt="Card image cap" style=" 
@@ -36,7 +74,7 @@
           </div>
         </div>
     </div>
-    {% endif %}
+
 {% endfor %}
   </div>
 </div>

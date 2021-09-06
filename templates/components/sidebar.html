@@ -9,10 +9,10 @@
       </div>
       <ul class="list-group list-group-flush"></ul>
       
-      {% if request.user.is_authentcated %}
+      {% if request.user.is_authenticated %}
         <li class="list-group-item"><a href="#">Profili Düzenle</a></li>
         <li class="list-group-item"><a href="#">Şifre Değiştir</a> </li>
-        <li class="list-group-item"><a href="#">Yazılarım</a></li>
+        <li class="list-group-item"><a href="{% url 'myBooks' %}">Yazılarım</a></li> 
         <li class="list-group-item"><a href="#">Yazı Ekle</a></li>
         <li class="list-group-item"><a href="#">İletişim</a></li>
         <li class="list-group-item"> <a href="#">Hakkında</a> </li>
@@ -20,7 +20,8 @@
         
         {% else %}
         <li class="list-group-item"> <a href="#">Giriş Yap</a> </li>
-        <li class="list-group-item"> <a href="#">Kayıt Ol</a> </li> 
+        <li class="list-group-item"> <a href="#">Kayıt Ol</a> </li>
+       
         <li class="list-group-item"> <a href="#">Hakkında</a> </li>
        
         {% endif %}
