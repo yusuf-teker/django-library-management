@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}{{categoryName}}{% endblock %} 
+
+{% block content %}
+
+
+
+
+<div class="container">
+  <div class="row">
+{% for book in books %}
+      <div class="col-12 col-md-5 " >
+        <div class="card mb-4 " style="width: 18rem;" >
+          <img class="card-img-top mt-2" src="{{book.coverPicture.url}}" alt="Card image cap" style=" 
+          max-height: 405px;
+          max-width: 270px; 
+          min-height: 405px;
+          min-width: 270px; 
+          height: auto;
+          width: auto;
+          align-self: center;">
+          <div class="card-body">
+            <h5 class="card-title">{{book.bookName}}</h5>
+            <p class="card-text">{{book.bookBlurb|safe|truncatewords:35}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{book.author}} - {{book.publicationYear}}</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+    </div>
+
+{% endfor %}
+  </div>
+</div>
+
+<!--PAGINATION-->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    
+    {% if books.has_previous %} 
+    <li class="page-item ">
+      <a class="page-link" href="?sayfa={{ books.previous_page_number }}" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    {% endif %}
+  
+    
+    {% if books.paginator.num_pages  > 0 %}
+      <li class="page-item"><a class="page-link" href="#">{{ books.number }}</a></li>
+    {% endif %}
+    
+    {% if books.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ books.next_page_number }}">Next</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{ books.paginator.num_pages }}">Last</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" href="#">Next</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+
+
+{% endblock %}
+
+

@@ -11,6 +11,10 @@ class BooksModel(models.Model):
     author = models.CharField(max_length=30)
     numberOfPages = models.IntegerField()
     publicationYear = models.DateField()
+    isAvailable = models.BooleanField()
+    #isAvailable = models.BooleanField(default=True)
+    lendby = models.ForeignKey('auth.user', blank=True, null=True, on_delete=models.CASCADE)
+    lendperiod = models.DateField(blank=True, null=True)
     
     class Meta:
         db_table = 'book'
