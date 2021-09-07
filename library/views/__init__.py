@@ -3,3 +3,7 @@ from .category import category
 from .myBooks import myBooks
 from .bookDetail import bookDetail
 from .contact import ContactFormView
+from .add_book import add_book
+from .update_book import update_book
+from .delete_book import delete_book
+from .give_or_return_book import give_or_return_book

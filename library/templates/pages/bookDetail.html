@@ -24,12 +24,23 @@
         <ul class="list-group list-group-flush" style = "background-color: blue; vertical-align: bottom;">
           <li class="list-group-item" style="vertical-align: bottoms">{{book.author}} - {{book.publicationYear}}</li>
         </ul>
-                
         {% else %}
         <ul class="list-group list-group-flush" style = "background-color: rgb(255, 0, 0);vertical-align: bottom;">
           <li class="list-group-item list-group-item-dark" style="vertical-align: bottoms"  >Author: {{book.author}} - Publication Date: {{book.publicationYear}}</li>
         </ul>
         {% endif %}
+        {% if request.user.groups.all.0.name == 'admin' %}
+        <p>
+          <a class="btn btn-danger" href="{% url 'delete-book' slug=book.slug %}">DELETE BOOK</a>
+          <a class="btn btn-danger" href="{% url 'give-or-return-book' slug=book.slug %}">GIVE BOOK</a>
+          <a class="btn btn-danger" href="{% url 'update-book' slug=book.slug %}">UPDATE BOOK</a>
+        </p>
+        
+        {% endif %}
+        <!--CONTROL IF THE USER HAS AUTHORITY-->
+    
+          
+       
       </div>
     </div>
   </div>

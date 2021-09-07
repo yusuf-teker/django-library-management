@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% include 'sidebar.html' %}
 
 {% block title %}Anasayfa{% endblock %} 
 
@@ -11,10 +12,8 @@
   <div class="row">
 {% for book in books %}
 
-
-
-  <div class="col-12 col-md-5 " >
-    <div class="card mb-4 " style="width: 24rem;" >
+  <div class="col-lg-6 d-flex align-items-stretch" >
+    <div class="card mb-4 " style="width: 24rem; " >
       <img class="card-img-top mt-2 ml-2" src="{{book.coverPicture.url}}" alt="Card image cap" style=" 
       max-height: 405px;
       max-width: 270px; 
@@ -22,12 +21,14 @@
       min-width: 270px; 
       height: auto;
       width: auto;
-      align-self: center;">
-      <div class="card-body">
-        <h5 class="card-title"><a href="{% url 'bookDetail' slug=book.slug %}">{{book.bookName}}</a></h5>
-        <p class="card-text">{{book.bookBlurb|safe|truncatewords:30}}</p>
-      </div>
-      
+      align-self: center;" >
+   <div class="card-body" style="align-self:center;" >
+    <h5 class="card-title"><a href="{% url 'bookDetail' slug=book.slug %}">{{book.bookName}}</a></h5>
+    <p class="card-text" style="max-height: 150px;
+    max-width: 270px; 
+    min-height: 150px;
+    min-width: 270px;">{{book.bookBlurb|safe|truncatewords:30}}</p>
+  </div>
       
       <ul class="list-group list-group-flush">
         <li class="list-group-item">{{book.author}} - {{book.publicationYear}}</li>

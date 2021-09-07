@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}UPDATE BOOK{% endblock %} 
+
+{% block content %} 
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy}}
+    <input type="submit" class="btn btn-primary mt-3 mb-3" value="Update">
+</form>
+
+{% endblock %}
+  

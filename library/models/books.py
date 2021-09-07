@@ -12,7 +12,7 @@ class BooksModel(models.Model):
     author = models.CharField(max_length=30)
     numberOfPages = models.IntegerField()
     publicationYear = models.DateField()
-    isAvailable = models.BooleanField()
+    isAvailable = models.BooleanField(default=True)
     #isAvailable = models.BooleanField(default=True)
     lendby = models.ForeignKey(User , blank=True, null=True, on_delete=models.CASCADE,related_name='books')
     lendperiod = models.DateField(blank=True, null=True)
