@@ -1,47 +1,19 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+
+{% load crispy_forms_tags %} 
+
 {% block title %}ADD BOOK{% endblock %} 
 
-
-
 {% block content %} 
-<!--
-<form action="{% url 'add-book' %}" enctype="multipart/form-data" method="POST">{% csrf_token %} 
-    {{ form|crispy}} 
-    <input type="submit" value="Add Book" class="btn btn-danger mt-3 mb-3">
-</form> 
-<a class="related-widget-wrapper-link add-related"  target="popup"  id="add_id_categories" href="/admin/library/categoriesmodel/add/?_to_field=id&amp;_popup=1" title="Add another categories model"><img src="/static/admin/img/icon-addlink.svg" alt="Add"></a>     
--->
-<!----------------------------------------------------------------->
-<div class="col-sm-9"> 
-           
-    <form action="/add-book" enctype="multipart/form-data" method="POST"><input type="hidden" name="csrfmiddlewaretoken" value="vfzTPDn91rj5WoT7UAuEQjN0widMtoPuByRu083XM1vbUKguWh8amDvCnOvgHK33"> 
-        
-    
-    <div id="div_id_bookName" class="form-group"> <label for="id_bookName" class=" requiredField">
-                    BookName<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="bookName" maxlength="50" class="textinput textInput form-control" required="" id="id_bookName"> </div> </div> <div id="div_id_bookBlurb" class="form-group"> <label for="id_bookBlurb" class=" requiredField">
-                    BookBlurb<span class="asteriskField">*</span> </label> <div class=""> <textarea name="bookBlurb" cols="40" rows="10" class="textarea form-control" required="" id="id_bookBlurb"></textarea> </div> </div> 
-                    <div id="div_id_categories" class="form-group">
-                         <label for="id_categories" class=" requiredField">
-                             Categories<span class="asteriskField">*</span>
-                        </label> 
-                        <div class=""> <select name="categories" class="selectmultiple form-control" required="" id="id_categories" multiple=""> <option value="1">Science Fiction</option> <option value="2">Post Apocalyptic</option> <option value="3">History</option>
-                        
-    </select> </div> </div>    <a class="related-widget-wrapper-link add-related" target="popup" id="add_id_categories" href="/admin/library/categoriesmodel/add/?_to_field=id&amp;_popup=1" title="Add another categories model"><img src="/static/admin/img/icon-addlink.svg" alt="Add"> Add a new Category</a>
-     <div id="div_id_coverPicture" class="form-group"> <label for="id_coverPicture" class=" requiredField">
-                    CoverPicture<span class="asteriskField">*</span> </label> <div class=""> <input type="file" name="coverPicture" accept="image/*" class="clearablefileinput form-control-file" required="" id="id_coverPicture"> </div> </div> <div id="div_id_author" class="form-group"> <label for="id_author" class=" requiredField">
-                    Author<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="author" maxlength="30" class="textinput textInput form-control" required="" id="id_author"> </div> </div> <div id="div_id_numberOfPages" class="form-group"> <label for="id_numberOfPages" class=" requiredField">
-                    NumberOfPages<span class="asteriskField">*</span> </label> <div class=""> <input type="number" name="numberOfPages" class="numberinput form-control" required="" id="id_numberOfPages"> </div> </div> <div id="div_id_publicationYear" class="form-group"> <label for="id_publicationYear" class=" requiredField">
-                    PublicationYear<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="publicationYear" class="dateinput form-control" required="" id="id_publicationYear"> </div> </div>
+<form action = "{% url 'add-book' %}" method="POST" enctype = "multipart/form-data">{% csrf_token %}
+     {{ form.media  }}
+     {{ form|crispy}}
      
-        <input type="submit" value="Add Book" class="btn btn-danger mt-3 mb-3">
-    </form> 
-         
-    
-    
-            </div>
-
-         
-
+    <a class="related-widget-wrapper-link add-related" target="popup" id="add_id_categories" href="" title="Add another categories model"><img src="/static/admin/img/icon-addlink.svg" alt="Add"> Add a new Category</a>
+    <input type="submit" value="Add Book" class="btn btn-danger mt-3 mb-3"> 
+</form>
+        
 {% endblock %}
-  
+
+<!----------------------------------------------------------------->
+

@@ -13,7 +13,7 @@ environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7%rn1#m&e27+csy)k!@tf+6+!u0_68f7+6swiyjr#)uru%3*3#'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'library',
-    #'users'
     'crispy_forms'
    
 ]
@@ -139,3 +138,5 @@ EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD') #past the key or password app here
 EMAIL_PORT = 587
 EMAIL_USE_TLS  = True
 DEFAULT_FROM_EMAIL = 'y.teker.1907.1907@gmail.com'
+
+LOGIN_REDIRECT_URL = '/'

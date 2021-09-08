@@ -4,17 +4,13 @@
 
 {% block content %}
 
-
-
-
-
-
 <table class="table">
     <thead class="thead-light">
       <tr>
         <th scope="col">Book ID</th>
         <th scope="col">Book Name</th>
         <th scope="col">Last Date</th>
+        <th scope="col">Actions</th>
       </tr>
 
     </thead>
@@ -24,27 +20,12 @@
             <th scope="row">{{book.id}}</th>
             <td>{{book.bookName}}</td>
             <td>{{book.lendperiod}}</td>
+            <td><button type="button" class="btn btn-warning">Return Request</button>
+                <button type="button" class="btn btn-info">Extend Time</button></td>
           </tr>
           {% endfor %}
     </tbody>
   </table>
-  
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -68,10 +49,6 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">{{book.author}} - {{book.publicationYear}}</li>
           </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
         </div>
     </div>
 

@@ -6,6 +6,8 @@ from library.models import BooksModel
 
 @login_required(login_url='/')
 def give_or_return_book(request, slug):
+    if not request.user.groups.filter(name = 'admin').exists():
+        return redirect('/')
     book = get_object_or_404(BooksModel, slug=slug)
     form = GiveOrReturnBookModelForm(request.POST or None, files=request.FILES or None, instance=book)
     if form.is_valid():

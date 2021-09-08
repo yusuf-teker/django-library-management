@@ -6,7 +6,7 @@ from django.db.models import Q
 # Create your views here.
 def homepage(request):
     query = request.GET.get('query')
-    books = BooksModel.objects.all()
+    books = BooksModel.objects.order_by('-id')
 
     if query:
         books = books.filter(

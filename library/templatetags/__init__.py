@@ -1,1 +1,0 @@
-from .category_list import category_list
