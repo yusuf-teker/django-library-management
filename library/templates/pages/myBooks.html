@@ -20,8 +20,8 @@
             <th scope="row">{{book.id}}</th>
             <td>{{book.bookName}}</td>
             <td>{{book.lendperiod}}</td>
-            <td><button type="button" class="btn btn-warning">Return Request</button>
-                <button type="button" class="btn btn-info">Extend Time</button></td>
+            <td><button type="button" class="btn btn-warning"> <a href="{% url 'return-demand' slug=book.slug %}">Return Request</a></button>
+                <button type="button" class="btn btn-info"> <a href="{% url 'extend-demand' slug=book.slug %}">Extend Time</a> </button></td>
           </tr>
           {% endfor %}
     </tbody>

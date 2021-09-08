@@ -140,3 +140,48 @@ EMAIL_USE_TLS  = True
 DEFAULT_FROM_EMAIL = 'y.teker.1907.1907@gmail.com'
 
 LOGIN_REDIRECT_URL = '/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers':False,
+    'formatters': { 
+        'basicCustom': {
+            'format':'{asctime} {levelname} {message} {name}',
+            'style': '{'
+        }
+    },
+    'handlers':{
+        'console':{
+            'class':'logging.StreamHandler'
+        },
+        'file':{ 
+            'class': 'logging.FileHandler',
+            'filename': 'logs/borrow_demand.log',
+            'formatter': 'basicCustom'
+        },
+        'file2':{ 
+            'class': 'logging.FileHandler',
+            'filename': 'logs/return_demand.log',
+            'formatter': 'basicCustom'
+        },
+        'file3':{ 
+            'class': 'logging.FileHandler',
+            'filename': 'logs/extend_demand.log',
+            'formatter': 'basicCustom'
+        }
+    },    
+    'loggers': {
+        'borrow_demand': {
+            'handlers': ['console','file'],
+            'level': 'INFO'
+        },
+        'return_demand': {
+            'handlers': ['console', 'file2'],
+            'level': 'INFO'
+        },
+        'extend_demand': {
+            'handlers': ['console', 'file3'],
+            'level': 'INFO'
+        }
+    }
+}

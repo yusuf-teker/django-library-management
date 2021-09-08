@@ -8,8 +8,6 @@ from library.models import BooksModel, categories,CategoriesModel
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User, Group
 class   AddBookCreateView(LoginRequiredMixin,CreateView):
-
-
     
     login_url = reverse_lazy('login')
     template_name = 'pages/add-book.html'
