@@ -3,6 +3,9 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from account.forms import RegistrationForm
 from django.contrib.auth import login,authenticate
+from django.contrib.auth.models import User, Group
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 def registration(request):
     if request.method == 'POST':
@@ -19,3 +22,9 @@ def registration(request):
     return render(request, 'pages/registration.html', context={
         'form': form
     })
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        instance.groups.add(Group.objects.get(name='student'))

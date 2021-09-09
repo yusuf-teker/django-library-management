@@ -12,7 +12,7 @@
       {% if request.user.is_authenticated %}
         <li class="list-group-item"><a href="{% url 'change-password' %}">Şifre Değiştir</a> </li>
         <li class="list-group-item"><a href="{% url 'myBooks' %}">My Books</a></li> 
-        {% if request.user.groups.all.0.name == 'admin' %}
+        {% if request.user.groups.all.0.name == 'officer' or request.user.groups.all.0.name == 'admin' %}
         <li class="list-group-item"><a href="{% url 'add-book' %}">Add Book</a></li>
         {% else %}
         <li class="list-group-item"><a href="{% url 'contact' %}">Contact</a></li>

@@ -5,7 +5,7 @@
 
 
 {% block content %} 
-{% if request.user.groups.all.0.name == 'admin' %}
+{% if request.user.groups.all.0.name == 'officer' or request.user.groups.all.0.name == 'admin' %}
 <form method="POST">{% csrf_token %} 
    <p><h3> Are you sure you want to delete it?</h3></p>
     <button type="button" class="btn btn-success btn-lg mt-3 mb-3 " style="padding-left: 25px;padding-right: 25px;" > <a href="javascript:window.history.back();"style="color: rgb(255, 255, 255);" >No</a></button>

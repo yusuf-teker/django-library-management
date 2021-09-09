@@ -32,7 +32,7 @@
 
 
 
-        {% if request.user.groups.all.0.name == 'admin' %}  <!--CONTROL IF THE USER HAS AUTHORITY-->
+        {% if request.user.groups.all.0.name == 'officer' or request.user.groups.all.0.name == 'admin' %}  <!--CONTROL IF THE USER HAS AUTHORITY-->
         <p class = "mt-3"> 
          
           <a class="btn btn-primary ms-3" href="{% url 'give-or-return-book' slug=book.slug %}">{% if book.isAvailable %}GIVE BOOK{% else %}GET or RETURN BOOK{% endif %}</a>
@@ -81,7 +81,7 @@
          
          
            
-          {% if request.user.groups.all.0.name == 'admin' %}
+          {% if request.user.groups.all.0.name == 'officer' or request.user.groups.all.0.name == 'admin' %}
             <a class="btn btn-primary ms-3" href="{% url 'give-or-return-book' slug=book.slug %}">{% if book.isAvailable %}GIVE BOOK{% else %}RETURN BOOK{% endif %}</a>
             <a class="btn btn-secondary ms-3" href="{% url 'update-book' slug=book.slug %}">UPDATE BOOK</a>
             <a class="btn btn-danger ms-3" href="{% url 'delete-book' slug=book.slug %}">DELETE BOOK</a> 

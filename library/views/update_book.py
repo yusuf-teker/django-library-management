@@ -19,7 +19,7 @@ class UpdateBookUpdateView( UpdateView):
     fields = ('bookName', 'author', 'coverPicture', 'categories','bookBlurb','numberOfPages','publicationYear')
 
     def get_object(self):
-        if not (self.request.user.groups.filter(name = 'admin').exists()):
+        if not (self.request.user.groups.filter(name__in=['officer', 'admin']).exists()):
             return redirect('/')
         book = get_object_or_404(
             BooksModel,
@@ -27,7 +27,7 @@ class UpdateBookUpdateView( UpdateView):
         return book
     
     def get_success_url(self):
-        if not (self.request.user.groups.filter(name = 'admin').exists()):
+        if not (self.request.user.groups.filter(name__in=['officer', 'admin']).exists()):
             return redirect('/')
         return reverse('bookDetail', kwargs={
             'slug': self.get_object().slug

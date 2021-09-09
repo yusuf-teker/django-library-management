@@ -16,7 +16,7 @@ class   AddBookCreateView(LoginRequiredMixin,CreateView):
 
    
     def form_valid(self, form):
-        if not (self.request.user.groups.filter(name = 'admin').exists()):
+        if not (self.request.user.groups.filter(name__in=['officer', 'admin']).exists()):
             return redirect('/')
             
         book = form.save(commit = False)  
