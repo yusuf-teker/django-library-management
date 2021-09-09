@@ -1,23 +1,27 @@
-
-
+<style>
+  .list-group-item {
+   border-radius: 15px;
+   text-align:center;
+}
+</style>
 
    <!--MENU-->
-   <div class = "col-sm-3">
-    <div class="card">
-      <div class="card-header">
-        MENÜ
+   <div class = "col-sm-2">
+    <div class="card-transparent">
+      <div class="card-header"  style="border: 5px solid; border-color: rgb(0, 163, 35);border-radius: 15px;text-align:center;">
+        MENU
       </div>
-      <ul class="list-group list-group-flush"></ul>
+      <ul class="list-group list-group-flush bg-transparent " style="background-color: rgba(0,0,0,.3)" ></ul>
       
       {% if request.user.is_authenticated %}
-        <li class="list-group-item"><a href="{% url 'change-password' %}">Şifre Değiştir</a> </li>
-        <li class="list-group-item"><a href="{% url 'myBooks' %}">My Books</a></li> 
+        <li class="list-group-item mt-3  bg-transparent"  style="border: 5px solid; border-color: rgb(0, 163, 35);"><a href="{% url 'change-password' %}" style="color: rgb(0, 0, 0);">Change Password</a> </li>
+        <li class="list-group-item mt-3  bg-transparent"  style="border: 5px solid; border-color: rgb(0, 163, 35);"><a href="{% url 'myBooks' %}" style="color: rgb(0, 0, 0);">My Books</a></li> 
         {% if request.user.groups.all.0.name == 'officer' or request.user.groups.all.0.name == 'admin' %}
-        <li class="list-group-item"><a href="{% url 'add-book' %}">Add Book</a></li>
+        <li class="list-group-item mt-3  bg-transparent"  style="border: 5px solid; border-color: rgb(0, 163, 35);"><a href="{% url 'add-book' %}" style="color: rgb(0, 0, 0);">Add Book</a></li>
         {% else %}
-        <li class="list-group-item"><a href="{% url 'contact' %}">Contact</a></li>
+        <li class="list-group-item mt-3  bg-transparent"  style="border: 5px solid; border-color: rgb(0, 163, 35);"><a href="{% url 'contact' %}" style="color: rgb(0, 0, 0);">Contact</a></li>
         {% endif %}
-        <li class="list-group-item"> <a href="{% url 'exit' %}">Exit</a> </li> 
+        <li class="list-group-item mt-3  bg-transparent"  style="border: 5px solid; border-color: rgb(0, 163, 35);border-radius: 15px;"> <a href="{% url 'exit' %}" style="color: rgb(0, 0, 0);">Exit</a> </li> 
 
         {% endif %} 
         

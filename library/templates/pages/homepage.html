@@ -13,7 +13,7 @@
 {% for book in books %}
 
   <div class="col-lg-6 d-flex align-items-stretch" >
-    <div class="card mb-4 " style="width: 24rem; " >
+    <div class="card mb-4 " style="width: 24rem;background-color: rgba(255, 255, 255, 0.6 ); " >
       <img class="card-img-top mt-2 ml-2" src="{{book.coverPicture.url}}" alt="Card image cap" style=" 
       max-height: 405px;
       max-width: 270px; 
@@ -21,7 +21,7 @@
       min-width: 270px; 
       height: auto;
       width: auto;
-      align-self: center;" >
+      align-self: center;">
    <div class="card-body" style="align-self:center;" >
     <h5 class="card-title"><a href="{% url 'bookDetail' slug=book.slug %}">{{book.bookName}}</a></h5>
     <p class="card-text" style="max-height: 150px;
@@ -29,22 +29,17 @@
     min-height: 150px;
     min-width: 270px;">{{book.bookBlurb|safe|truncatewords:30}}</p>
   </div>
-      
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{book.author}} - {{book.publicationYear}}</li>
+  {% if book.isAvailable %}
+      <ul class="list-group list-group-flush" >
+        <li class="list-group-item" style = "background-color: rgb(21, 255, 0);"> <p style="font-weight: bold;">{{book.author}} &#9;-&#9; {{book.publicationYear}}</p> </li>
       </ul>
-<!--**********************-->
-      {% if book.isAvailable %}
-      <div class="card-body" style = "background-color: rgb(21, 255, 0);">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
       {% else %}
-      <div class="card-body" style = "background-color: rgb(255, 0, 0);">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
+      <ul class="list-group list-group-flush" >
+        <li class="list-group-item" style = "background-color: rgb(255, 0, 0)"> <p style="font-weight: bold;">{{book.author}} &#9;-&#9; {{book.publicationYear}}</p> </li>
+      </ul>
       {% endif %}
+<!--**********************-->
+
     </div>
 </div>
 
@@ -86,7 +81,7 @@
   </ul>
 </nav>
 
-
+<br><br>
 {% endblock %}
 
 

@@ -5,19 +5,17 @@
 {% block content %}
 
 
-
-
-
-<div class="card-transparent mb-3">
-  <div class="row g-0" style="background-color: rgba(255, 255, 255, 0.5); border: 5px solid; border-color: rgba(33, 36, 41, 0.5);">
+<!-------------------------------------------------------------------------------------------------------->
+<div class="card-transparent mb-3" >
+  <div class="row g-0" style="border-radius: 10px;background-color: rgba(255, 255, 255, 0.5); border: 5px solid; border-color: rgba(33, 36, 41, 0.5);">
     <div class="col-md-4">
-      <img src="{{ book.coverPicture.url }}" class="img-fluid rounded-start" alt="..." style=" height: auto; 
+      <img src="{{ book.coverPicture.url }}" class="img-fluid rounded-start " alt="..." style=" height: auto; 
       width: auto; 
       min-height: 400px;
-      max-width: 300px; ">
+      max-width: 300px;">
     </div>
-    <div class="col-md-8">
-      <div class="card-body" >
+    <div class="col-md-7">
+      <div class="card-body">
         <h5 class="card-title">{{ book.bookName }}</h5>
         <p class="card-text" >{{ book.bookBlurb|safe }}</p> 
         {% if book.iaAvailable %}
@@ -35,7 +33,7 @@
         {% if request.user.groups.all.0.name == 'officer' or request.user.groups.all.0.name == 'admin' %}  <!--CONTROL IF THE USER HAS AUTHORITY-->
         <p class = "mt-3"> 
          
-          <a class="btn btn-primary ms-3" href="{% url 'give-or-return-book' slug=book.slug %}">{% if book.isAvailable %}GIVE BOOK{% else %}GET or RETURN BOOK{% endif %}</a>
+          <a class="btn btn-primary ms-3" href="{% url 'give-or-return-book' slug=book.slug %}">{% if book.isAvailable %}BORROW BOOK{% else %}RETURN BOOK{% endif %}</a>
           <a class="btn btn-secondary ms-3" href="{% url 'update-book' slug=book.slug %}">UPDATE BOOK</a>
           <a class="btn btn-danger ms-3" href="{% url 'delete-book' slug=book.slug %}">DELETE BOOK</a>
         </p>
@@ -94,6 +92,7 @@
     
   </div>
 </div>
+<br><br><br><br>
 {% endblock %}
 
 
