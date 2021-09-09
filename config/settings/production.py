@@ -2,7 +2,7 @@ from .base import *
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-ALLOWED_HOSTS = ['www.yusufteker.com','127.0.0.1','localhost','127.0.0.1:8000']
+ALLOWED_HOSTS = ['yusufteker.com','127.0.0.1','localhost','127.0.0.1:8000','18.193.114.82']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -20,13 +20,23 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
- 
+  """
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 
 sentry_sdk.init(
