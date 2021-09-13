@@ -4,6 +4,7 @@ from library.models import CategoriesModel
 from django.contrib.auth.models import User
 import os
 from uuid import uuid4
+from django.core.exceptions import ValidationError
 def path_and_rename(path):
     def wrapper(instance, filename):
         ext = filename.split('.')[-1]
@@ -16,6 +17,14 @@ def path_and_rename(path):
         # return the whole path to the file
         return os.path.join(path, filename)
     return wrapper
+    
+def validate_image(fieldfile_obj):
+    filesize = fieldfile_obj.file.size
+    megabyte_limit = 2.0
+    if filesize > megabyte_limit*1024*1024:
+        raise ValidationError("Max file size is %sMB" % str(megabyte_limit))
+
+
 
 class BooksModel(models.Model):
    
@@ -24,7 +33,7 @@ class BooksModel(models.Model):
     bookBlurb = models.TextField()
     categories = models.ManyToManyField(CategoriesModel, related_name='book')
     #coverPicture = models.ImageField(upload_to='book_cover_picture')
-    coverPicture = models.ImageField(upload_to=path_and_rename('book_cover_picture'))
+    coverPicture = models.ImageField(upload_to=path_and_rename('book_cover_picture'),validators=[validate_image],help_text='Maximum file size allowed is 2Mb')
     author = models.CharField(max_length=30)
     numberOfPages = models.IntegerField()
     publicationYear = models.DateField()
