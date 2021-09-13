@@ -4,6 +4,7 @@ from library.models import CategoriesModel
 from django.contrib.auth.models import User
 
 class BooksModel(models.Model):
+   
     bookName = models.CharField(max_length=50,blank=False,null=False)
     slug = AutoSlugField(populate_from = 'bookName', unique=True)
     bookBlurb = models.TextField()
@@ -22,3 +23,4 @@ class BooksModel(models.Model):
 
     def __str__(self) :
         return self.bookName
+    

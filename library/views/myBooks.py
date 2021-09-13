@@ -12,7 +12,7 @@ def myBooks (request):
    
     page = request.GET.get('page')
     paginator = Paginator(books,2)
-
+    
     return render(request,'pages/myBooks.html',context={
         'books': paginator.get_page(page),
     

@@ -9,12 +9,12 @@
 <div class="card-transparent mb-3" >
   <div class="row g-0" style="border-radius: 10px;background-color: rgba(255, 255, 255, 0.5); border: 5px solid; border-color: rgba(33, 36, 41, 0.5);">
     <div class="col-md-4">
-      <img src="{{ book.coverPicture.url }}" class="img-fluid rounded-start " alt="..." style=" height: auto; 
+      <img src="{{ book.coverPicture.url }}" class="img-fluid rounded-start " alt="..." style=" height: autof;
       width: auto; 
       min-height: 400px;
       max-width: 300px;">
     </div>
-    <div class="col-md-7">
+    <div class="col-lg-6 col-md-9 " >
       <div class="card-body">
         <h5 class="card-title">{{ book.bookName }}</h5>
         <p class="card-text" >{{ book.bookBlurb|safe }}</p> 
@@ -42,10 +42,10 @@
 
         {% else %}
         {% if book.lendby == request.user %}
-        <a class="btn btn-danger ms-3 m-3" href="{% url 'return-demand' slug=book.slug %}">RETURN DEMAND</a> 
+        <a class="btn btn-danger ms-3 m-3" href="{% url 'return-demand' slug=book.slug %}">RETURN REQUEST</a> 
       {% endif %}
       {% if book.isAvailable %}
-        <a class="btn btn-danger ms-3 m-3" href="{% url 'borrow-demand' slug=book.slug %}">BORROW DEMAND</a>
+        <a class="btn btn-danger ms-3 m-3 vertical-center" style="float: right;" href="{% url 'borrow-demand' slug=book.slug %}">BORROW REQUEST</a>
       {% endif %}
       
 

@@ -35,7 +35,8 @@
       </ul>
       {% else %}
       <ul class="list-group list-group-flush" >
-        <li class="list-group-item" style = "background-color: rgb(255, 0, 0)"> <p style="font-weight: bold;">{{book.author}} &#9;-&#9; {{book.publicationYear}}</p> </li>
+        <li class="list-group-item" style = "background-color: rgb(255, 0, 0)"> <p style="font-weight: bold;">{{book.author}} &#9;-&#9; {{book.publicationYear}}</p>
+        <p>Not available until {{book.lendperiod}}</p> </li>
       </ul>
       {% endif %}
 <!--**********************-->
