@@ -9,3 +9,5 @@ class PhotoModel(models.Model):
         db_table = 'photo'
         verbose_name = 'photo'
         verbose_name_plural = 'photos'
+    def __str__(self):
+        return self.description 

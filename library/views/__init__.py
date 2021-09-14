@@ -10,3 +10,4 @@ from .give_or_return_book import give_or_return_book
 from .borrow_demand import borrow_demand
 from .return_demand import return_demand
 from .extend_demand import extend_demand
+from .photo import photo_list
